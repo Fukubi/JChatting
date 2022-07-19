@@ -24,6 +24,10 @@ io.on('connection', (socket) => {
     console.log(`New message from ${socket.id}: ${msg}`);
     socket.broadcast.emit('newMsg', { value: msg, sender: socket.id });
   });
+
+  socket.on('disconnect', () => {
+    socket.broadcast.emit('disconnection', socket.id);
+  });
 });
 
 server.listen(PORT, () => {

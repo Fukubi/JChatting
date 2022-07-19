@@ -66,6 +66,10 @@
     socket.on('newConnection', (id) => {
       $('#messages').append(`<li class="list-group-item list-group-item-success">${id} se conectou!</li>`);
     });
+
+    socket.on('disconnection', (id) => {
+      $('#messages').append(`<li class="list-group-item list-group-item-danger">${id} se desconectou!</li>`);
+    });
   </script>
 </body>
 
