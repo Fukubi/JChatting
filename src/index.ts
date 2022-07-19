@@ -17,11 +17,9 @@ app.get('/', (_req, res) => {
 });
 
 io.on('connection', (socket) => {
-  console.log(`${socket.id} connected`);
   socket.broadcast.emit('newConnection', socket.id);
 
   socket.on('msg', (msg) => {
-    console.log(`New message from ${socket.id}: ${msg}`);
     socket.broadcast.emit('newMsg', { value: msg, sender: socket.id });
   });
 
