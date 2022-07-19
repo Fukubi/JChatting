@@ -23,7 +23,7 @@ io.on('connection', (socket) => {
   socket.on('msg', (msg) => {
     console.log(`New message from ${socket.id}: ${msg}`);
     socket.broadcast.emit('newMsg', { value: msg, sender: socket.id });
-  })
+  });
 });
 
 server.listen(PORT, () => {
